@@ -45,6 +45,10 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this, "Email and Password can't be blank", Toast.LENGTH_SHORT).show()
             return
         }
+        if (pass.length < 6) {
+            Toast.makeText(this, "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         if (pass != confirmPassword) {
             Toast.makeText(this, "Password and Confirm Password do not match", Toast.LENGTH_SHORT)
