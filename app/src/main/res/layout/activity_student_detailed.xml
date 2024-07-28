@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#004e52"
+            tools:context="com.example.firebase.ui.StudentDetailedActivity"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/arrow_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="48dp"
+                android:src="@drawable/profile_picture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_back" />
+
+            <TextView
+                android:id="@+id/tv_student_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/student_detail_screen_name"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_profile" />
+
+            <TextView
+                android:id="@+id/tv_student_school_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/student_detail_screen_school_name"
+                android:textAlignment="center"
+                android:textColor="#A6CAEC"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_student_name" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/view_constrain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_student_school_name">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/add_student_constrain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/background_label"
+                    app:layout_constraintEnd_toStartOf="@id/view_student_constrain"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/student_detail_screen_gender"
+                        android:textColor="#003B46"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:textAllCaps="false" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/gender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:textColor="#003B46"
+                        android:textSize="13sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_gender"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:textAllCaps="false" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/view_student_constrain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/background_label"
+                    app:layout_constraintEnd_toStartOf="@id/map_student_constrain"
+                    app:layout_constraintStart_toEndOf="@id/add_student_constrain"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_dob"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/student_detail_screen_dob"
+                        android:textColor="#003B46"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:textAllCaps="false" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:hint="@string/student_detail_screen_12_10_2024"
+                        android:textColor="#003B46"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_dob"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:textAllCaps="false" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/map_student_constrain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/background_label"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/view_student_constrain"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_blood_group"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:text="@string/student_detail_screen_blood"
+                        android:textColor="#003B46"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/blood_group"
+                        app:textAllCaps="false" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/blood_group"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:hint="@string/student_detail_screen_ab"
+                        android:textColor="#003B46"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_blood_group"
+                        app:textAllCaps="false" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_constrain">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_parent_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/student_detail_screen_parent_details"
+                    android:textColor="@color/dark_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/parentDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_parent_details">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvfather_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_father_s_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMother_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_mother_s_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvfather_name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_Contact_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_contact"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvMother_name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_Emergency_Contact_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_emergency_contact_no"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_Contact_no" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.50" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/father_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_kumar"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/mothername"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_student_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/father_name" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/contact_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_student_number"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/mothername" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/emeregency_contact_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_em_number"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline"
+                        app:layout_constraintTop_toBottomOf="@id/contact_no" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_Residential_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/student_detail_screen_residential_details"
+                    android:textColor="@color/dark_green"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/parentDetails" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/Residential_Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:background="@drawable/edit_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_Residential_details">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_address1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_address_1"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_address2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_address_2"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_address1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_city"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_address2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_state"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_city" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_zip"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_zip"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_state" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.50" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_address_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/address2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_address_name2"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@id/address1" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/city"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_city_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@id/address2" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_state_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@id/city" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/zip_code"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/student_detail_screen_pincode_name"
+                        android:textColor="@color/dark_green"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@id/guideline2"
+                        app:layout_constraintTop_toBottomOf="@id/state" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="@string/student_detail_screen_location_name"
+                    android:textColor="@color/dark_green"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/Residential_Details" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/map_view"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/google_api"
+                    android:scaleType="fitXY"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_location"/>
+
+<!--                <com.google.android.gms.maps.MapView-->
+<!--                    android:id="@+id/map_view"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="150dp"-->
+<!--                    android:layout_marginStart="28dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginEnd="28dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@id/tv_location" />-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>
