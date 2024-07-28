@@ -120,5 +120,5 @@ class SelectLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         return output
     }
-
+}
 
