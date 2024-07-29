@@ -39,13 +39,6 @@ class LoginActivity : AppCompatActivity() {
 // Check if the user is logged in
         val currentUser = auth.currentUser
         Log.i("LoginActivity", "currentUser:$currentUser ")
-
-        if (currentUser!=null){
-            val intent = Intent(this, AddStudentDetails::class.java)
-            startActivity(intent)
-            finish()
-        }
-
         loginActivity.btnSignup.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
